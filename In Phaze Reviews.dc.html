@@ -36,12 +36,19 @@
     h2 { font-size:clamp(28px,8vw,44px) !important; }
     footer > div { flex-direction:column !important; gap:28px !important; }
     footer > div:last-child { flex-direction:column !important; gap:8px !important; }
+    /* The filter chips wrap into a block taller than the viewport on mobile;
+       leaving it sticky pins it over the review cards and makes them
+       unreadable, so it becomes a normal in-flow section instead. */
+    section[data-screen-label="Filters"] { position:static !important; top:auto !important; backdrop-filter:none !important; }
+    section[data-screen-label="Filters"] > div { padding:16px 18px !important; }
   }
   @media (max-width:620px) {
     .proofChip { display:none !important; }
     header a[href^="tel"] { font-size:14px !important; padding:11px 14px !important; }
     .callBar { flex-direction:column !important; align-items:flex-start !important; gap:10px !important; padding:12px 18px !important; }
     .callBar a { width:100% !important; text-align:center !important; }
+    .callBar > div { min-width:0; width:100%; }
+    .callBar > div span:last-child { white-space:normal !important; line-height:1.5 !important; }
   }
 
   /* Main nav: dropdowns are CSS-only (hover + focus-within) and the mobile
@@ -306,7 +313,7 @@
 <div class="callBar" style="position:sticky;bottom:0;z-index:70;background:#7B2FF7;display:flex;align-items:center;justify-content:space-between;padding:14px 48px">
   <div style="display:flex;align-items:center;gap:12px">
     <span style="color:#FFD400;font-size:13px;letter-spacing:2px">★★★★★</span>
-    <span style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.14em;color:#EBDFFF">{{ reviewRating }} FROM {{ proofChip }} · FREE ESTIMATES</span>
+    <span style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.14em;color:#EBDFFF">FREE ESTIMATES</span>
   </div>
   <a href="tel:+14075997777" style="background:#0B0710;color:#FFD400;font-family:Archivo,sans-serif;font-weight:900;font-size:17px;padding:11px 22px" style-hover="background:#FFD400;color:#0B0710">TAP TO CALL (407) 599-7777</a>
 </div>
