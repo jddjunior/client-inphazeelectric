@@ -884,9 +884,9 @@
 </footer>
 
 <div class="callBar" style="position:sticky;bottom:0;z-index:70;background:#7B2FF7;display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:10px;padding:12px 20px;box-sizing:border-box;width:100%">
-  <div style="display:flex;align-items:center;gap:12px;min-width:0;flex:1 1 auto">
+  <div style="display:flex;align-items:center;gap:12px;min-width:0;flex:1 1 260px">
     <span style="color:#FFD400;font-size:13px;letter-spacing:2px;flex:0 0 auto">★★★★★</span>
-    <span style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.14em;color:#EBDFFF;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">{{ reviewRating }} FROM {{ proofChip }} · FREE ESTIMATES · SAME-DAY CALLBACK</span>
+    <span style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.14em;color:#EBDFFF;min-width:0;white-space:normal;line-height:1.5">{{ reviewRating }} FROM {{ proofChip }} · FREE ESTIMATES · SAME-DAY CALLBACK</span>
   </div>
   <a href="tel:+14075997777" style="background:#0B0710;color:#FFD400;font-family:Archivo,sans-serif;font-weight:900;font-size:15px;padding:11px 18px;box-sizing:border-box;flex:1 1 100%;text-align:center;white-space:nowrap" style-hover="background:#FFD400;color:#0B0710">TAP TO CALL (407) 599-7777</a>
 </div>
@@ -1001,7 +1001,7 @@
     if (!L || !root) { this.setState({ leadError: 'Something is not loaded — please call us instead.' }); return; }
     const get = (k) => { const el = root.querySelector('[data-f="' + k + '"]'); return el ? el.value.trim() : ''; };
     const name = get('name'), phone = get('phone');
-    if (!name || !phone) { this.setState({ leadError: 'Name and phone are required — everything else is optional.' }); return; }
+    if (!name || !phone) { this.setState({ leadError: 'Name and phone are required ��� everything else is optional.' }); return; }
     this.setState({ leadBusy: true, leadError: '' });
     L.submit({
       name, phone,
