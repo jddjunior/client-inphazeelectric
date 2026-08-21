@@ -148,7 +148,11 @@
     header a[href^="tel"] { font-size:14px !important; padding:11px 14px !important; }
     header img { height:34px !important; }
     .pagewrap > div:last-child { flex-direction:column !important; align-items:flex-start !important; gap:10px !important; padding:12px 18px !important; }
-    .pagewrap > div:last-child a { width:100% !important; text-align:center !important; }
+    .pagewrap > div:last-child a { width:100% !important; text-align:center !important; flex:0 0 auto !important; }
+    /* Once this rule flips the bar to column direction, the row-mode flex-basis
+       values (260px / 100%) on its children get reinterpreted as HEIGHT bases,
+       inflating the bar to fill most of the viewport. Reset them to content size. */
+    .pagewrap > div:last-child > div:first-child { flex:0 1 auto !important; width:100% !important; }
   }
 
   /* Main nav: dropdowns are CSS-only (hover + focus-within) and the mobile
