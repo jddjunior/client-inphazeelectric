@@ -36,6 +36,11 @@
     h2 { font-size:clamp(28px,8vw,44px) !important; }
     footer > div { flex-direction:column !important; gap:28px !important; }
     footer > div:last-child { flex-direction:column !important; gap:8px !important; }
+    /* The filter chips wrap into a block taller than the viewport on mobile;
+       leaving it sticky pins it over the review cards and makes them
+       unreadable, so it becomes a normal in-flow section instead. */
+    section[data-screen-label="Filters"] { position:static !important; top:auto !important; backdrop-filter:none !important; }
+    section[data-screen-label="Filters"] > div { padding:16px 18px !important; }
   }
   @media (max-width:620px) {
     .proofChip { display:none !important; }
