@@ -24,7 +24,7 @@
     const isService = file.includes('Service Page');
     const isCity = file.includes('City Page');
     const isMatrix = file.includes('Matrix Page');
-    const isInternal = /Brand Kit|Image Prompt Kit|SEO Architecture|CRM/.test(file);
+    const isInternal = /Brand Kit|Image Prompt Kit|SEO Architecture|CRM|Customer Avatar/.test(file);
     let title = 'In Phaze Electric | Orlando Electrician';
     let description = 'In Phaze Electric is a veteran-owned Orlando electrician providing clear pricing, licensed work, and dependable service across Central Florida.';
 
