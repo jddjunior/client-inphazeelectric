@@ -1,0 +1,38 @@
+.scp0:hover,
+.navPanel a:hover,
+.mainNav a:hover,
+.navItem > a:hover,
+.routeChip:hover {
+  background-color: #0B0710 !important;
+  color: #FFD400 !important;
+}
+
+.scp0:hover h1,
+.scp0:hover h2,
+.scp0:hover h3,
+.scp0:hover h4,
+.navPanel a:hover h1,
+.navPanel a:hover h2,
+.navPanel a:hover h3,
+.navPanel a:hover h4 {
+  color: #F7F4F2 !important;
+}
+
+.scp1:hover {
+  background-color: #0B0710 !important;
+  color: #FFD400 !important;
+}
+
+.scp1:hover h1,
+.scp1:hover h2,
+.scp1:hover h3,
+.scp1:hover h4 {
+  color: #FFD400 !important;
+}
+
+.mainNav a:hover,
+.navPanel a:hover,
+.mobileMenu a:hover,
+footer a:hover {
+  color: #FFD400 !important;
+}
