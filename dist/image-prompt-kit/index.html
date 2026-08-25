@@ -1,0 +1,426 @@
+<!DOCTYPE html><html lang="en" data-astro-cid-z4jru4n3><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>In Phaze Electric</title><script src="/support.js"></script><link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"><script type="module" src="/_astro/BaseLayout.astro_astro_type_script_index_0_lang.DINoMzOZ.js"></script><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;600;800;900&family=Barlow:wght@400;500;600;700&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet"><link rel="stylesheet" href="/_astro/BaseLayout.BrZ_ffR3.css"></head><body data-astro-cid-z4jru4n3>
+<x-dc>
+<helmet>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="" />
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;600;800;900&family=Barlow:wght@400;500;600;700&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet" />
+<style>
+  body { margin:0; background:#0B0710; }
+  a { color:#C9A5FF; text-decoration:none; }
+  a:hover { color:#FFD400; }
+  ::selection { background:#FFD400; color:#0B0710; }
+  .copyBtn { cursor:pointer; user-select:none; transition:background .15s ease, color .15s ease, border-color .15s ease; }
+  .copyBtn:hover { background:#FFD400 !important; color:#0B0710 !important; border-color:#FFD400 !important; }
+  .promptBox { font-family:'JetBrains Mono',monospace; font-size:13px; line-height:1.8; color:#DDD4E8; background:#07040C; border:1px solid #2A1B3D; padding:22px 24px; white-space:pre-wrap; margin:0; }
+  @media (max-width:900px) {
+    section { padding-left:18px !important; padding-right:18px !important; padding-top:56px !important; padding-bottom:56px !important; }
+    .split { grid-template-columns:1fr !important; gap:24px !important; }
+    .quad { grid-template-columns:1fr !important; }
+    h1 { font-size:clamp(38px,10.5vw,64px) !important; }
+    h2 { font-size:clamp(26px,7.6vw,42px) !important; }
+  }
+</style>
+</helmet>
+
+<div style="width:100%;max-width:1440px;margin:0 auto;background:#0B0710;color:#F7F4F2;font-family:Barlow,system-ui,sans-serif;overflow-x:clip">
+
+<div style="position:sticky;top:0;z-index:60;background:rgba(11,7,16,0.92);backdrop-filter:blur(14px);border-bottom:1px solid #22132F;display:flex;align-items:center;justify-content:space-between;gap:20px;padding:12px 48px;flex-wrap:wrap">
+  <div style="display:flex;align-items:center;gap:18px">
+    <a href="In%20Phaze%20Homepage.dc.html" style="display:block;line-height:0"><img src="uploads/cropped-InPhaze-Electric-Medium.png" alt="In Phaze Electric" style="height:32px;width:auto;display:block" /></a>
+    <span style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.2em;color:#F87171">INTERNAL · PROMPT KIT</span>
+  </div>
+  <div style="display:flex;gap:18px;flex-wrap:wrap;font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.14em">
+    <a href="In%20Phaze%20Homepage.dc.html" style="color:#C9A5FF">← HOMEPAGE</a>
+    <a href="In%20Phaze%20Site%20Index.dc.html" style="color:#C9A5FF">SITE INDEX</a>
+    <a href="In%20Phaze%20Brand%20Kit.dc.html" style="color:#C9A5FF">BRAND KIT</a>
+    <a href="In%20Phaze%20CRM.dc.html" style="color:#C9A5FF">LEAD DESK</a>
+  </div>
+</div>
+
+<section data-screen-label="Cover" style="padding:88px 48px 64px;background:radial-gradient(110% 80% at 22% 0%, #3B1268 0%, #150B24 52%, #0B0710 100%)">
+  <div style="font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:0.18em;color:#9B87B8">IN PHAZE ELECTRIC &nbsp;/&nbsp; IMAGE &amp; COPY PROMPT KIT &nbsp;/&nbsp; v1.0</div>
+  <h1 style="font-family:Archivo,sans-serif;font-weight:900;font-size:clamp(44px,7.2vw,100px);line-height:0.88;letter-spacing:-0.05em;margin:32px 0 0;max-width:1060px;text-wrap:balance">Paste the same block every time. Drift dies.</h1>
+  <p style="max-width:740px;margin:26px 0 0;font-size:21px;line-height:1.5;color:#CFC6DA">Brand drift in generated assets comes from re-describing the look each time. So don't. There is one Style Block below — it goes into <em>every</em> image prompt, unchanged. Then you add one line describing the subject. That's the whole system.</p>
+  <div style="display:flex;gap:12px;margin-top:34px;flex-wrap:wrap">
+    <div class="copyBtn" onClick="{{ copyMaster }}" style="background:#FFD400;color:#0B0710;font-family:Archivo,sans-serif;font-weight:900;font-size:17px;padding:16px 26px">{{ masterLabel }}</div>
+    <div class="copyBtn" onClick="{{ copyAll }}" style="border:1px solid #6B5A80;color:#F7F4F2;font-family:Archivo,sans-serif;font-weight:700;font-size:16px;padding:16px 24px">{{ allLabel }}</div>
+  </div>
+</section>
+
+<section data-screen-label="How to use" style="padding:0 48px 64px;background:#0B0710">
+  <div class="quad" style="display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:#22132F;border:1px solid #22132F">
+    <div style="background:#0B0710;padding:28px 26px">
+      <div style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.14em;color:#A855F7">STEP 01</div>
+      <h3 style="font-family:Archivo,sans-serif;font-weight:800;font-size:21px;margin:12px 0 8px">Paste the Style Block</h3>
+      <p style="margin:0;font-size:16px;line-height:1.55;color:#A99BBD">Unchanged, every time, at the top. Never paraphrase it — paraphrasing is how drift starts.</p>
+    </div>
+    <div style="background:#0B0710;padding:28px 26px">
+      <div style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.14em;color:#A855F7">STEP 02</div>
+      <h3 style="font-family:Archivo,sans-serif;font-weight:800;font-size:21px;margin:12px 0 8px">Add one Subject line</h3>
+      <p style="margin:0;font-size:16px;line-height:1.55;color:#A99BBD">Pick a recipe below and fill the {BRACKETS}. One sentence of subject is enough.</p>
+    </div>
+    <div style="background:#0B0710;padding:28px 26px">
+      <div style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.14em;color:#A855F7">STEP 03</div>
+      <h3 style="font-family:Archivo,sans-serif;font-weight:800;font-size:21px;margin:12px 0 8px">Append the Never list</h3>
+      <p style="margin:0;font-size:16px;line-height:1.55;color:#A99BBD">The negative prompt does more work than the positive one. It kills the stock-photo look.</p>
+    </div>
+    <div style="background:#0B0710;padding:28px 26px">
+      <div style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.14em;color:#A855F7">STEP 04</div>
+      <h3 style="font-family:Archivo,sans-serif;font-weight:800;font-size:21px;margin:12px 0 8px">Keep the seed</h3>
+      <p style="margin:0;font-size:16px;line-height:1.55;color:#A99BBD">When one comes out right, save the seed and reuse it for that asset class. Consistency beats novelty.</p>
+    </div>
+  </div>
+</section>
+
+<section data-screen-label="Style block" style="padding:0 48px 64px;background:#0B0710">
+  <div style="display:flex;justify-content:space-between;align-items:flex-end;gap:20px;flex-wrap:wrap;margin-bottom:16px">
+    <div>
+      <span style="font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:0.24em;color:#FFD400">THE STYLE BLOCK — NON-NEGOTIABLE</span>
+      <h2 style="font-family:Archivo,sans-serif;font-weight:900;font-size:clamp(28px,4.2vw,54px);line-height:0.94;letter-spacing:-0.04em;margin:14px 0 0">One paragraph. Every image.</h2>
+    </div>
+    <div class="copyBtn" onClick="{{ copyMaster }}" style="border:1px solid #2A1B3D;color:#CFC6DA;font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.14em;padding:11px 16px">{{ masterLabel }}</div>
+  </div>
+  <pre class="promptBox">{{ master }}</pre>
+  <p style="margin:16px 0 0;font-size:16px;line-height:1.6;color:#8A8296;max-width:820px">Why this works: it pins the four things models drift on — light source, lens, color, and finish quality. Everything else is subject.</p>
+</section>
+
+<section data-screen-label="Never list" style="padding:0 48px 64px;background:#0B0710">
+  <div class="split" style="display:grid;grid-template-columns:1fr 1fr;gap:20px;align-items:start">
+    <div>
+      <div style="display:flex;justify-content:space-between;align-items:center;gap:16px;margin-bottom:14px">
+        <span style="font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:0.2em;color:#F87171">NEGATIVE PROMPT · APPEND ALWAYS</span>
+        <div class="copyBtn" onClick="{{ copyNegative }}" style="border:1px solid #2A1B3D;color:#CFC6DA;font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.14em;padding:9px 13px">{{ negativeLabel }}</div>
+      </div>
+      <pre class="promptBox" style="border-color:#4A1D22">{{ negative }}</pre>
+    </div>
+    <div>
+      <div style="font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:0.2em;color:#FFD400;margin-bottom:14px">LOCKED VALUES · PASTE HEXES, NOT COLOR NAMES</div>
+      <div style="border:1px solid #22132F">
+        <div style="display:grid;grid-template-columns:auto 1fr;gap:1px;background:#22132F">
+          <div style="background:#0B0710;padding:14px 18px;font-family:'JetBrains Mono',monospace;font-size:12px;color:#FFD400">#7B2FF7</div>
+          <div style="background:#0B0710;padding:14px 18px;font-size:15px;color:#CFC6DA">Phaze Violet — truck body, brand fields, the only purple</div>
+          <div style="background:#0B0710;padding:14px 18px;font-family:'JetBrains Mono',monospace;font-size:12px;color:#FFD400">#FFD400</div>
+          <div style="background:#0B0710;padding:14px 18px;font-size:15px;color:#CFC6DA">Voltage Yellow — hazard stripe, one accent, never a wash</div>
+          <div style="background:#0B0710;padding:14px 18px;font-family:'JetBrains Mono',monospace;font-size:12px;color:#FFD400">#0B0710</div>
+          <div style="background:#0B0710;padding:14px 18px;font-size:15px;color:#CFC6DA">Conduit Black — the ground of every composition</div>
+          <div style="background:#0B0710;padding:14px 18px;font-family:'JetBrains Mono',monospace;font-size:12px;color:#FFD400">#3B1268</div>
+          <div style="background:#0B0710;padding:14px 18px;font-size:15px;color:#CFC6DA">Deep Phaze — shadow tint, gradient partner</div>
+          <div style="background:#0B0710;padding:14px 18px;font-family:'JetBrains Mono',monospace;font-size:12px;color:#FFD400">#F7F4F2</div>
+          <div style="background:#0B0710;padding:14px 18px;font-size:15px;color:#CFC6DA">Drywall — the only near-white; never pure #FFF on dark</div>
+        </div>
+      </div>
+      <div style="border:1px solid #22132F;padding:20px 22px;margin-top:20px">
+        <div style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.14em;color:#FFD400">THE FRIED GUY RULE</div>
+        <p style="margin:10px 0 0;font-size:16px;line-height:1.6;color:#CFC6DA">Never generate him. He is existing artwork — composite the real file. If a prompt returns a cartoon electrocuted man, you have drifted. He only ever appears inside a hazard-stripe warning label, one per page, never on a money page or an estimate.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section data-screen-label="Recipes" style="padding:0 48px 64px;background:#0B0710">
+  <div style="margin-bottom:20px">
+    <span style="font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:0.24em;color:#A855F7">SUBJECT RECIPES</span>
+    <h2 style="font-family:Archivo,sans-serif;font-weight:900;font-size:clamp(28px,4.2vw,54px);line-height:0.94;letter-spacing:-0.04em;margin:14px 0 0">Ten assets cover the whole site.</h2>
+    <p style="margin:16px 0 0;font-size:18px;line-height:1.55;color:#8A8296;max-width:760px">Each button copies the Style Block, the subject line, and the Never list as one finished prompt. Fill the {BRACKETS} before you run it.</p>
+  </div>
+  <div style="display:grid;gap:14px">
+    <sc-for list="{{ recipes }}" as="r">
+      <div style="border:1px solid #22132F;background:#0B0710">
+        <div style="display:flex;justify-content:space-between;align-items:flex-start;gap:20px;padding:22px 24px;flex-wrap:wrap">
+          <div style="flex:1;min-width:260px">
+            <div style="display:flex;align-items:center;gap:12px;flex-wrap:wrap">
+              <div style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.14em;color:#FFD400">{{ r.tag }}</div>
+              <div style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.14em;color:#6B6277">{{ r.ratio }}</div>
+            </div>
+            <h3 style="font-family:Archivo,sans-serif;font-weight:800;font-size:23px;margin:10px 0 6px;letter-spacing:-0.025em">{{ r.name }}</h3>
+            <p style="margin:0;font-size:16px;line-height:1.55;color:#A99BBD">{{ r.use }}</p>
+          </div>
+          <div style="display:flex;gap:8px;flex-wrap:wrap">
+            <div class="copyBtn" onClick="{{ r.copyFull }}" style="border:1px solid #2A1B3D;color:#CFC6DA;font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.14em;padding:10px 14px">{{ r.fullLabel }}</div>
+            <div class="copyBtn" onClick="{{ r.toggle }}" style="border:1px solid #2A1B3D;color:#CFC6DA;font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.14em;padding:10px 14px">{{ r.toggleLabel }}</div>
+          </div>
+        </div>
+        <div style="padding:0 24px 22px">
+          <pre class="promptBox" style="font-size:12.5px">{{ r.subject }}</pre>
+        </div>
+        <sc-if value="{{ r.open }}" hint-placeholder-val="{{ false }}">
+          <div style="padding:0 24px 22px">
+            <div style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.14em;color:#6B6277;margin-bottom:8px">FULL PROMPT AS COPIED</div>
+            <pre class="promptBox" style="font-size:12px;color:#A99BBD;max-height:320px;overflow:auto">{{ r.full }}</pre>
+          </div>
+        </sc-if>
+      </div>
+    </sc-for>
+  </div>
+</section>
+
+<section data-screen-label="Copy voice" style="padding:0 48px 88px;background:#0B0710">
+  <div class="split" style="display:grid;grid-template-columns:1fr 1fr;gap:20px;align-items:start">
+    <div>
+      <div style="display:flex;justify-content:space-between;align-items:center;gap:16px;margin-bottom:14px;flex-wrap:wrap">
+        <span style="font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:0.2em;color:#FFD400">COPY PROMPT · FOR ANY WRITTEN ASSET</span>
+        <div class="copyBtn" onClick="{{ copyVoice }}" style="border:1px solid #2A1B3D;color:#CFC6DA;font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.14em;padding:9px 13px">{{ voiceLabel }}</div>
+      </div>
+      <pre class="promptBox">{{ voice }}</pre>
+    </div>
+    <div>
+      <div style="border:1px solid #22132F;padding:24px 26px">
+        <div style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.14em;color:#FFD400">DRIFT CHECKLIST — RUN BEFORE ANYTHING SHIPS</div>
+        <div style="display:grid;gap:14px;margin-top:18px">
+          <div style="border-left:2px solid #7B2FF7;padding-left:16px"><div style="font-family:Archivo,sans-serif;font-weight:800;font-size:18px">Is there exactly one yellow?</div><p style="margin:5px 0 0;font-size:15px;line-height:1.5;color:#A99BBD">One accent per image. Two yellows and it reads discount, not premium.</p></div>
+          <div style="border-left:2px solid #7B2FF7;padding-left:16px"><div style="font-family:Archivo,sans-serif;font-weight:800;font-size:18px">Would a real electrician wince?</div><p style="margin:5px 0 0;font-size:15px;line-height:1.5;color:#A99BBD">Impossible wiring, backwards breakers, no PPE. Tradespeople are the audience.</p></div>
+          <div style="border-left:2px solid #7B2FF7;padding-left:16px"><div style="font-family:Archivo,sans-serif;font-weight:800;font-size:18px">Does it look like stock?</div><p style="margin:5px 0 0;font-size:15px;line-height:1.5;color:#A99BBD">Crossed arms, white teeth, blue gradient. If it could sell insurance, kill it.</p></div>
+          <div style="border-left:2px solid #7B2FF7;padding-left:16px"><div style="font-family:Archivo,sans-serif;font-weight:800;font-size:18px">Is the purple ours?</div><p style="margin:5px 0 0;font-size:15px;line-height:1.5;color:#A99BBD">#7B2FF7, not magenta, not indigo. Hold it against the truck photo.</p></div>
+          <div style="border-left:2px solid #7B2FF7;padding-left:16px"><div style="font-family:Archivo,sans-serif;font-weight:800;font-size:18px">Any invented text?</div><p style="margin:5px 0 0;font-size:15px;line-height:1.5;color:#A99BBD">Never let a model render the logo, phone number, or license. Composite real type.</p></div>
+        </div>
+      </div>
+      <div style="border:1px solid #22132F;padding:24px 26px;margin-top:20px">
+        <div style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.14em;color:#FFD400">WHEN TO GENERATE AT ALL</div>
+        <p style="margin:10px 0 0;font-size:16px;line-height:1.6;color:#CFC6DA">Generated imagery is scaffolding, not the goal. Real panels, real crews and the real purple trucks outperform anything a model makes — a documentary photo of Grant beats a perfect render every time. Use these prompts for backgrounds, textures, and placeholders while you build the real photo library.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+</div>
+
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  state = { copied: '', open: {} };
+
+  static MASTER = [
+    'STYLE — IN PHAZE ELECTRIC (do not paraphrase, paste verbatim):',
+    'Documentary trade photography, not advertising. Shot on a full-frame camera, 35mm or 50mm prime,',
+    'f/2.8, natural available light with one hard practical source — a work light, a garage bulb, late',
+    'Florida afternoon sun through a doorway. Deep near-black shadows (#0B0710) with detail retained;',
+    'violet cast (#7B2FF7) in the shadow falloff; exactly one small warm accent (#FFD400) somewhere in',
+    'frame, never a wash or a gradient overlay. Muted, slightly desaturated palette apart from that',
+    'violet and that single yellow. Real texture: dust, drywall grit, scuffed knuckles, honest sweat,',
+    'worn tool leather. Composition is tight and confident with generous negative space for type on the',
+    'lower third. Colors: violet #7B2FF7, voltage yellow #FFD400, near-black #0B0710, deep purple',
+    'shadow #3B1268, off-white #F7F4F2. Feels like a still from a documentary about a working crew in',
+    'Orlando, Florida — cinematic but unstaged, quiet competence rather than heroism.'
+  ].join('
+');
+
+  static NEGATIVE = [
+    'NEVER (negative prompt):',
+    'stock photography look, crossed arms, thumbs up, hard hat worn indoors for no reason, blindingly',
+    'white teeth, staged smiles at camera, blue-and-orange color grade, teal shadows, aggressive',
+    'gradient background, lens flare, glowing lightning bolts, cartoon sparks, electricity as neon',
+    'squiggles, mascot characters, cartoon electrocuted man, clip art, 3D render look, plastic skin,',
+    'HDR halos, oversaturation, magenta or indigo standing in for the brand violet, more than one',
+    'yellow element, text of any kind, logos, phone numbers, license numbers, watermarks, signage with',
+    'legible words, impossible or unsafe wiring, backwards breakers, exposed live conductors presented',
+    'as normal, emoji, sparkles, tidy showroom cleanliness, empty new-construction blandness.'
+  ].join('
+');
+
+  static VOICE = [
+    'COPY VOICE — IN PHAZE ELECTRIC (paste before any writing task):',
+    '',
+    'Write as the best electrician on the crew explaining something to a homeowner he respects.',
+    '',
+    'RULES',
+    '- Plain. Say the thing. "Your panel is full," never "capacity limitations may be present."',
+    '  Sixth-grade reading level, always.',
+    '- Specific. Numbers, names, streets. "Grant, Winter Park, Tuesday" beats "our team, your area, soon."',
+    '- Unbothered. Thirty years of confidence needs no exclamation points. Calm signals competence.',
+    '- A little wired. One wink per page maximum. The purple trucks earned a sense of humor; the',
+    '  estimate did not.',
+    '- Proof over adjectives. 4.8 stars from 801 reviews does the work that "quality you can trust" fails at.',
+    '- Lead with the honest thing, including when it costs the sale: if they do not need the work, say so.',
+    '',
+    'NEVER',
+    '- Three adjectives in a row ("code-compliant, reliable, professional").',
+    '- "Committed to excellence," "tailored solutions," "unique needs," "state-of-the-art."',
+    '- Invented statistics. If we cannot source it, it does not go on the page.',
+    '- Fear-selling. Describe the actual risk plainly and let it stand on its own.',
+    '- Exclamation points, emoji, ALL-CAPS shouting in body copy.',
+    '',
+    'FIXED FACTS',
+    'Tony Taylor, owner, Navy veteran, 30 years on the tools. In business since 2009. 4.8 stars,',
+    '801 reviews. Licensed ER13014534, insured. Free estimates, price matching, one-year warranty.',
+    'Military, first-responder and teacher discounts. Hablamos Espanol. (407) 599-7777.',
+    'Named crew: Grant, Jason, Mike, Victor, William, Keylin, Josh; Janzie runs permits and scheduling.',
+    'Promises: "If you don't need it, we'll tell you." / "We handle the permit." / "We close what we open."',
+    'Tagline: Your Electrician For Life.'
+  ].join('
+');
+
+  static RECIPES = [
+    {
+      tag: 'HERO', ratio: '16:9 · 2400×1350', name: 'Homepage hero plate',
+      use: 'Dark, wide, type-safe. The scroll hero sits on top of this, so the bottom third must stay quiet.',
+      subject: 'SUBJECT: A purple-wrapped electrician's service van parked at the curb of a modest Central Florida
+home at blue hour, shot from a low three-quarter angle across the street. Porch light and one open
+garage bay are the only warm sources. Wet asphalt holding a violet reflection. Palm silhouettes.
+Bottom third of the frame is empty road and shadow, reserved for headline type.'
+    },
+    {
+      tag: 'PANEL', ratio: '1:1 · 1600×1600', name: 'Panel before / after',
+      use: 'The highest-performing content in this trade. Shoot as a pair with identical framing.',
+      subject: 'SUBJECT: A residential electrical panel photographed straight on, door open, interior filling the
+frame. {BEFORE: crowded 1970s panel, double-tapped breakers, tangled conductors, faded handwritten
+labels, dust} {AFTER: new 200-amp panel, conductors bent in neat parallel runs, machine-printed
+labels, torqued lugs, nothing crossing}. Hard raking light from the left. No hands, no people.'
+    },
+    {
+      tag: 'CREW', ratio: '3:4 · 1500×2000', name: 'Tech portrait at the truck',
+      use: 'Crew page and city pages. Faces build local fame — customers already ask for them by name.',
+      subject: 'SUBJECT: A working electrician in his forties standing at the open rear doors of a purple service
+van, late afternoon, looking slightly off camera mid-conversation rather than posing. Plain work
+shirt, tool bag on one shoulder, hands that clearly work. Sun raking from behind, violet shadow on
+the van panel. Waist-up, shallow depth of field. He is not smiling for a camera; he is listening.'
+    },
+    {
+      tag: 'FLEET', ratio: '16:9 · 2400×1350', name: 'Fleet / truck detail',
+      use: 'Service-area pages, ads, and anywhere the purple needs to do the recognition work.',
+      subject: 'SUBJECT: Tight detail of the rear corner of a purple-wrapped work van — body panel, tail light, and
+chrome — with a hazard-stripe band of yellow and black visible at the edge of frame. Shot at f/2.8
+so the far end of the van falls out of focus. Real dirt on the lower panel. Suburban Florida street
+reflected faintly in the paint. No legible text or logos.'
+    },
+    {
+      tag: 'WARNING', ratio: '4:5 · 1600×2000', name: 'Warning-label background',
+      use: 'DIY-safety and "we found this" posts. The one place the fried guy is allowed, composited on top.',
+      subject: 'SUBJECT: Extreme close-up texture of a scorched electrical outlet and blackened wall plate, or a
+melted breaker terminal, filling the frame. Harsh direct flash, clinical and unflattering — evidence
+photography, not art. Leave the upper two-thirds relatively flat and uncluttered so a hazard-stripe
+label and headline can be composited on top.'
+    },
+    {
+      tag: 'EV', ratio: '3:2 · 2100×1400', name: 'EV charger install',
+      use: 'The EV charger money page and Lake Mary matrix page. Craft is the story here.',
+      subject: 'SUBJECT: A wall-mounted EV charger newly installed in a residential garage, conduit running dead
+straight up the wall with evenly spaced straps, cable coiled neatly on its hook. A car's rear quarter
+panel just in frame, out of focus. Light from the open garage door behind camera. The subject of the
+photo is the neatness of the conduit run, not the product.'
+    },
+    {
+      tag: 'GEN', ratio: '3:2 · 2100×1400', name: 'Standby generator',
+      use: 'Generator page and the Kissimmee matrix page. Reads as permanent infrastructure, not an appliance.',
+      subject: 'SUBJECT: A standby generator on a concrete pad beside a Florida house, shot low from the corner so
+the enclosure reads solid and substantial. Clean conduit entering the wall, transfer switch visible
+as a small detail. Overcast pre-storm sky, saturated grass, first raindrops on the enclosure lid.
+Quiet and reassuring rather than dramatic.'
+    },
+    {
+      tag: 'LIGHT', ratio: '16:9 · 2400×1350', name: 'Lighting result',
+      use: 'Lighting page. The only recipe where warm light is allowed to dominate — it is the product.',
+      subject: 'SUBJECT: A residential living room at dusk lit entirely by newly installed recessed LED cans, evenly
+spaced with no scalloping on the walls, ceiling completely free of patch marks. Shot from a corner at
+eye level, wide. Warm 3000K pools of light, deep shadow outside them, one violet note from a window.
+Room is lived-in — a book face-down, a throw off-center.'
+    },
+    {
+      tag: 'CITY', ratio: '21:9 · 2520×1080', name: 'City page banner',
+      use: 'Header band for each of the twelve city pages. Swap {CITY LANDMARK} per page; keep everything else.',
+      subject: 'SUBJECT: A wide establishing frame of {CITY LANDMARK OR STREETSCAPE — e.g. Park Avenue storefronts,
+Winter Park; a Butler Chain dock at dusk, Windermere; historic downtown brick, Sanford} in early
+evening, with a purple service van small in the frame going about its business rather than posed.
+Landscape orientation, horizon low, generous sky for type. Recognizably this town, not generic Florida.'
+    },
+    {
+      tag: 'TEXTURE', ratio: '1:1 · 2000×2000', name: 'Abstract background texture',
+      use: 'Section backgrounds and social cards. Should never compete with type placed over it.',
+      subject: 'SUBJECT: Abstract macro texture of coiled copper conductors, conduit bends, or a spool of wire,
+lit so it reads mostly as near-black with violet edge definition and a single small warm highlight.
+Almost monochrome. Shallow focus, no recognizable object at first glance — this is a surface for
+type to sit on, not a photograph of a thing.'
+    }
+  ];
+
+  copy = (text, key) => {
+    const done = () => {
+      this.setState({ copied: key });
+      clearTimeout(this._t);
+      this._t = setTimeout(() => this.setState({ copied: '' }), 1600);
+    };
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      navigator.clipboard.writeText(text).then(done).catch(() => this.fallbackCopy(text, done));
+    } else {
+      this.fallbackCopy(text, done);
+    }
+  };
+
+  fallbackCopy = (text, done) => {
+    const ta = document.createElement('textarea');
+    ta.value = text;
+    ta.style.position = 'fixed';
+    ta.style.opacity = '0';
+    document.body.appendChild(ta);
+    ta.select();
+    try { document.execCommand('copy'); } catch (e) {}
+    document.body.removeChild(ta);
+    done();
+  };
+
+  componentWillUnmount() { clearTimeout(this._t); }
+
+  fullPrompt(recipe) {
+    return Component.MASTER + '
+
+' + recipe.subject + '
+
+' + Component.NEGATIVE +
+      '
+
+OUTPUT: ' + recipe.ratio + '. Reuse the same seed for every image in this asset class.';
+  }
+
+  label(key, idle) { return this.state.copied === key ? '✓ COPIED' : idle; }
+
+  renderVals() {
+    const everything = [
+      '================ IN PHAZE ELECTRIC — PROMPT KIT v1.0 ================',
+      '',
+      Component.MASTER,
+      '',
+      Component.NEGATIVE,
+      '',
+      '================ SUBJECT RECIPES ================',
+      ''
+    ].concat(
+      Component.RECIPES.map(r => '--- ' + r.name.toUpperCase() + ' · ' + r.ratio + ' ---
+' + r.subject + '
+')
+    ).concat([
+      '================ COPY VOICE ================',
+      '',
+      Component.VOICE
+    ]).join('
+');
+
+    return {
+      master: Component.MASTER,
+      negative: Component.NEGATIVE,
+      voice: Component.VOICE,
+      copyMaster: () => this.copy(Component.MASTER, 'master'),
+      copyNegative: () => this.copy(Component.NEGATIVE, 'neg'),
+      copyVoice: () => this.copy(Component.VOICE, 'voice'),
+      copyAll: () => this.copy(everything, 'all'),
+      masterLabel: this.label('master', 'COPY THE STYLE BLOCK'),
+      negativeLabel: this.label('neg', 'COPY'),
+      voiceLabel: this.label('voice', 'COPY'),
+      allLabel: this.label('all', 'Copy the entire kit'),
+      recipes: Component.RECIPES.map((r, i) => ({
+        tag: r.tag,
+        ratio: r.ratio,
+        name: r.name,
+        use: r.use,
+        subject: r.subject,
+        full: this.fullPrompt(r),
+        open: !!this.state.open[i],
+        toggle: () => this.setState(s => ({ open: Object.assign({}, s.open, { [i]: !s.open[i] }) })),
+        toggleLabel: this.state.open[i] ? 'HIDE FULL' : 'SHOW FULL',
+        copyFull: () => this.copy(this.fullPrompt(r), 'r' + i),
+        fullLabel: this.label('r' + i, 'COPY FULL PROMPT')
+      }))
+    };
+  }
+}
+</script>
+<script src="/lead-store.js"></script><script src="/site-content.js"></script></body></html>
