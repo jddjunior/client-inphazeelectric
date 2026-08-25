@@ -1,0 +1,16 @@
+{
+  "name": "inphaze-electric",
+  "version": "1.0.0",
+  "description": "In Phaze Electric website",
+  "type": "module",
+  "scripts": {
+    "dev": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview",
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "astro": "^4.0.0"
+  }
+}
+
