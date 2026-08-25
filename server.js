@@ -5,25 +5,32 @@ import { fileURLToPath } from 'url';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const PORT = process.env.PORT || 3000;
-const DIST_DIR = path.join(__dirname, 'dist');
 
 const server = http.createServer((req, res) => {
-  let filePath = path.join(DIST_DIR, req.url);
+  let filePath = path.join(__dirname, req.url);
   
-  // If it's a directory, serve index.html
-  if (req.url === '/' || req.url.endsWith('/')) {
-    filePath = path.join(DIST_DIR, req.url, 'index.html');
+  // If it's a directory or root, serve index.html or the homepage
+  if (req.url === '/') {
+    filePath = path.join(__dirname, 'In Phaze Homepage.dc.html');
+  } else if (req.url.endsWith('/')) {
+    filePath = path.join(__dirname, req.url, 'index.html');
   }
   
-  // Try the file, then try with .html extension
-  const tryFiles = [filePath, filePath + '.html'];
+  // Try the requested file, then try with .html, then .dc.html
+  const tryFiles = [
+    filePath,
+    filePath + '.html',
+    filePath + '.dc.html'
+  ];
+  
   let found = false;
   
   for (const file of tryFiles) {
-    if (fs.existsSync(file)) {
+    if (fs.existsSync(file) && fs.statSync(file).isFile()) {
       const ext = path.extname(file);
       const contentType = {
         '.html': 'text/html',
+        '.dc': 'text/html',
         '.css': 'text/css',
         '.js': 'application/javascript',
         '.json': 'application/json',

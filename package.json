@@ -4,13 +4,8 @@
   "description": "In Phaze Electric website",
   "type": "module",
   "scripts": {
-    "dev": "astro dev",
-    "build": "astro build",
-    "preview": "astro preview",
-    "start": "node server.js"
-  },
-  "dependencies": {
-    "astro": "^4.0.0"
+    "start": "node server.js",
+    "dev": "node server.js"
   }
 }
 
