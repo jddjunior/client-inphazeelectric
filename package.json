@@ -1,0 +1,11 @@
+{
+  "name": "inphaze-electric",
+  "version": "1.0.0",
+  "description": "In Phaze Electric website",
+  "type": "module",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node server.js"
+  }
+}
+
