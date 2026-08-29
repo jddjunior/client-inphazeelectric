@@ -1,0 +1,545 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<script src="site-content.js"></script>
+<script src="lead-store.js"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="" />
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;600;800;900&family=Barlow:wght@400;500;600;700&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet" />
+<style>
+  body { margin:0; background:#0B0710; --headerH:94px; }
+  a { color:#C9A5FF; text-decoration:none; }
+  a:hover { color:#FFD400; }
+  header nav a, header a[href^="tel"] { white-space:nowrap; }
+  ::selection { background:#FFD400; color:#0B0710; }
+  .callBar { display:none !important; }
+  .routeChip { cursor:pointer; user-select:none; transition:border-color .15s ease, color .15s ease; }
+  .routeChip:hover { border-color:#FFD400 !important; color:#FFD400 !important; }
+  
+  @media (max-width:900px) {
+    .callBar { display:flex !important; }
+    header > div { padding:10px 16px !important; gap:10px !important; }
+    header img { height:34px !important; }
+    section, footer { padding-left:18px !important; padding-right:18px !important; }
+    section { padding-top:52px !important; padding-bottom:52px !important; }
+    .split, .quad, .trio { grid-template-columns:1fr !important; gap:22px !important; }
+    h1 { font-size:clamp(34px,9.5vw,58px) !important; }
+    h2 { font-size:clamp(26px,7.4vw,42px) !important; }
+    footer > div { flex-direction:column !important; gap:28px !important; }
+    footer > div:last-child { flex-direction:column !important; gap:8px !important; }
+  }
+  @media (max-width:620px) {
+    .proofChip { display:none !important; }
+    header a[href^="tel"] { font-size:14px !important; padding:11px 14px !important; }
+    .callBar { flex-direction:column !important; align-items:flex-start !important; gap:10px !important; padding:12px 18px !important; }
+    .callBar a { width:100% !important; text-align:center !important; }
+    .callBar > div { min-width:0; width:100%; }
+    .callBar > div span:last-child { white-space:normal !important; line-height:1.5 !important; }
+  }
+
+  /* Main nav: dropdowns are CSS-only (hover + focus-within) and the mobile
+     panel is a checkbox toggle, so navigation needs no per-page state. */
+  .navItem { position:relative; }
+  .navItem > .navPanel { display:none; position:absolute; top:100%; left:-18px; padding-top:16px; z-index:80; max-width:calc(100vw - 48px); }
+  .navItem:hover > .navPanel, .navItem:focus-within > .navPanel { display:block; }
+  .navToggle { position:absolute; opacity:0; pointer-events:none; }
+  .hamb { display:none; }
+  .mobileMenu { display:none; }
+  /* 1215px, not 1160: below this the header flex row (logo + nav 574 + chip + tel CTA)
+     no longer fits and the tel CTA — the site's one conversion action — gets squeezed. */
+  @media (max-width:1215px) {
+    .mainNav { display:none !important; }
+    .hamb { display:flex !important; }
+    .navToggle:checked ~ .mobileMenu { display:block !important; max-height:calc(100vh - 80px); overflow-y:auto; background:#0B0710; border-top:1px solid #22132F; }
+  }
+</style>
+</helmet>
+
+<div style="width:100%;max-width:1440px;margin:0 auto;background:#0B0710;color:#F7F4F2;font-family:Barlow,system-ui,sans-serif;position:relative;overflow-x:clip">
+
+<header style="position:sticky;top:0;z-index:60;background:rgba(11,7,16,0.86);backdrop-filter:blur(14px);border-bottom:1px solid #22132F">
+  <input type="checkbox" id="ipzNav" class="navToggle" aria-label="Open menu">
+  <div style="display:flex;align-items:center;justify-content:space-between;padding:16px 48px">
+    <div style="display:flex;align-items:center;gap:36px">
+      <a href="In%20Phaze%20Homepage.dc.html" style="display:block;line-height:0"><img src="uploads/cropped-InPhaze-Electric-Medium.png" alt="In Phaze Electric Inc." style="height:46px;width:auto;display:block" /></a>
+      <nav class="mainNav" style="display:flex;align-items:center;gap:24px;font-size:15px;font-weight:600;color:#CFC6DA">
+        <div class="navItem">
+          <a href="In%20Phaze%20Site%20Index.dc.html" style="color:#CFC6DA">Services <span style="font-size:11px;opacity:0.7">▾</span></a>
+          <div class="navPanel">
+          <div style="background:#12081F;border:1px solid #2A1B3D;padding:14px;box-shadow:0 24px 48px rgba(7,4,12,0.7);display:grid;width:max-content;grid-template-columns:repeat(2,max-content);gap:2px">
+            <a href="In%20Phaze%20Service%20Page.dc.html?p=electrical-panel-upgrade" style="color:#CFC6DA;font-size:15px;font-weight:500;padding:7px 12px;display:block;white-space:nowrap" style-hover="color:#FFD400">Panel &amp; service upgrades</a>
+            <a href="In%20Phaze%20Service%20Page.dc.html?p=ev-charger-installation" style="color:#CFC6DA;font-size:15px;font-weight:500;padding:7px 12px;display:block;white-space:nowrap" style-hover="color:#FFD400">EV charger installation</a>
+            <a href="In%20Phaze%20Service%20Page.dc.html?p=surge-lightning-protection" style="color:#CFC6DA;font-size:15px;font-weight:500;padding:7px 12px;display:block;white-space:nowrap" style-hover="color:#FFD400">Surge &amp; lightning protection</a>
+            <a href="In%20Phaze%20Service%20Page.dc.html?p=generator-installation" style="color:#CFC6DA;font-size:15px;font-weight:500;padding:7px 12px;display:block;white-space:nowrap" style-hover="color:#FFD400">Generator installation</a>
+            <a href="In%20Phaze%20Service%20Page.dc.html?p=lighting-installation" style="color:#CFC6DA;font-size:15px;font-weight:500;padding:7px 12px;display:block;white-space:nowrap" style-hover="color:#FFD400">Lighting &amp; fixtures</a>
+            <a href="In%20Phaze%20Service%20Page.dc.html?p=rewiring-remodels" style="color:#CFC6DA;font-size:15px;font-weight:500;padding:7px 12px;display:block;white-space:nowrap" style-hover="color:#FFD400">Rewiring, remodels &amp; additions</a>
+            <a href="In%20Phaze%20Service%20Page.dc.html?p=electrical-repair" style="color:#CFC6DA;font-size:15px;font-weight:500;padding:7px 12px;display:block;white-space:nowrap" style-hover="color:#FFD400">Troubleshooting &amp; repair</a>
+            <a href="In%20Phaze%20Service%20Page.dc.html?p=commercial-electrician" style="color:#CFC6DA;font-size:15px;font-weight:500;padding:7px 12px;display:block;white-space:nowrap" style-hover="color:#FFD400">Commercial &amp; build-out</a>
+            <a href="In%20Phaze%20Service%20Page.dc.html?p=emergency-electrician" style="color:#CFC6DA;font-size:15px;font-weight:500;padding:7px 12px;display:block;white-space:nowrap" style-hover="color:#FFD400">Emergency electrician</a>
+            <a href="In%20Phaze%20Site%20Index.dc.html" style="grid-column:1/-1;border-top:1px solid #2A1B3D;margin-top:8px;padding:12px 12px 4px;font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.14em;color:#FFD400;white-space:nowrap">ALL SERVICES &amp; PRICING →</a>
+          </div>
+          </div>
+        </div>
+        <div class="navItem">
+          <a href="In%20Phaze%20Site%20Index.dc.html" style="color:#FFD400">Service Areas <span style="font-size:11px;opacity:0.7">▾</span></a>
+          <div class="navPanel">
+          <div style="background:#12081F;border:1px solid #2A1B3D;padding:14px;box-shadow:0 24px 48px rgba(7,4,12,0.7);display:grid;width:max-content;grid-template-columns:repeat(3,max-content);gap:2px">
+            <a href="In%20Phaze%20City%20Page.dc.html?p=orlando-electrician" style="color:#CFC6DA;font-size:15px;font-weight:500;padding:7px 12px;display:block;white-space:nowrap" style-hover="color:#FFD400">Orlando</a>
+            <a href="In%20Phaze%20City%20Page.dc.html?p=winter-park-electrician" style="color:#CFC6DA;font-size:15px;font-weight:500;padding:7px 12px;display:block;white-space:nowrap" style-hover="color:#FFD400">Winter Park</a>
+            <a href="In%20Phaze%20City%20Page.dc.html?p=maitland-electrician" style="color:#CFC6DA;font-size:15px;font-weight:500;padding:7px 12px;display:block;white-space:nowrap" style-hover="color:#FFD400">Maitland</a>
+            <a href="In%20Phaze%20City%20Page.dc.html?p=longwood-electrician" style="color:#CFC6DA;font-size:15px;font-weight:500;padding:7px 12px;display:block;white-space:nowrap" style-hover="color:#FFD400">Longwood</a>
+            <a href="In%20Phaze%20City%20Page.dc.html?p=lake-mary-electrician" style="color:#CFC6DA;font-size:15px;font-weight:500;padding:7px 12px;display:block;white-space:nowrap" style-hover="color:#FFD400">Lake Mary</a>
+            <a href="In%20Phaze%20City%20Page.dc.html?p=winter-garden-electrician" style="color:#CFC6DA;font-size:15px;font-weight:500;padding:7px 12px;display:block;white-space:nowrap" style-hover="color:#FFD400">Winter Garden</a>
+            <a href="In%20Phaze%20City%20Page.dc.html?p=kissimmee-electrician" style="color:#CFC6DA;font-size:15px;font-weight:500;padding:7px 12px;display:block;white-space:nowrap" style-hover="color:#FFD400">Kissimmee</a>
+            <a href="In%20Phaze%20City%20Page.dc.html?p=oviedo-electrician" style="color:#CFC6DA;font-size:15px;font-weight:500;padding:7px 12px;display:block;white-space:nowrap" style-hover="color:#FFD400">Oviedo</a>
+            <a href="In%20Phaze%20City%20Page.dc.html?p=st-cloud-electrician" style="color:#CFC6DA;font-size:15px;font-weight:500;padding:7px 12px;display:block;white-space:nowrap" style-hover="color:#FFD400">St. Cloud</a>
+            <a href="In%20Phaze%20City%20Page.dc.html?p=apopka-electrician" style="color:#CFC6DA;font-size:15px;font-weight:500;padding:7px 12px;display:block;white-space:nowrap" style-hover="color:#FFD400">Apopka</a>
+            <a href="In%20Phaze%20City%20Page.dc.html?p=sanford-electrician" style="color:#CFC6DA;font-size:15px;font-weight:500;padding:7px 12px;display:block;white-space:nowrap" style-hover="color:#FFD400">Sanford</a>
+            <a href="In%20Phaze%20City%20Page.dc.html?p=windermere-electrician" style="color:#CFC6DA;font-size:15px;font-weight:500;padding:7px 12px;display:block;white-space:nowrap" style-hover="color:#FFD400">Windermere</a>
+            <a href="In%20Phaze%20Site%20Index.dc.html" style="grid-column:1/-1;border-top:1px solid #2A1B3D;margin-top:8px;padding:12px 12px 4px;font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.14em;color:#FFD400;white-space:nowrap">ALL 12 SERVICE AREAS →</a>
+          </div>
+          </div>
+        </div>
+        <a href="In%20Phaze%20Reviews.dc.html" style="color:#CFC6DA">Reviews</a>
+        <a href="In%20Phaze%20Crew.dc.html" style="color:#CFC6DA">The Crew</a>
+        <a href="In%20Phaze%20Cost.dc.html" style="color:#CFC6DA">Pricing</a>
+        <a href="In%20Phaze%20About.dc.html" style="color:#CFC6DA">About</a>
+        <a href="In%20Phaze%20Contact.dc.html" style="color:#CFC6DA">Contact</a>
+      </nav>
+    </div>
+    <div style="display:flex;align-items:center;gap:20px">
+      <div class="proofChip" style="display:flex;align-items:center;gap:9px;border:1px solid #2A1B3D;padding:7px 13px">
+        <span style="color:#FFD400;font-size:13px;letter-spacing:1px">★★★★★</span>
+        <span style="font-family:Archivo,sans-serif;font-weight:800;font-size:14px">{{ reviewRating }}</span>
+        <span style="font-family:'JetBrains Mono',monospace;font-size:10px;color:#9B87B8">{{ proofChip }}</span>
+      </div>
+      <a href="tel:+14075997777" style="background:#FFD400;color:#0B0710;font-family:Archivo,sans-serif;font-weight:900;font-size:16px;padding:13px 22px;letter-spacing:-0.01em" style-hover="background:#FFFFFF">CALL (407) 599-7777</a>
+      <label for="ipzNav" class="hamb" style="cursor:pointer;width:44px;height:44px;border:1px solid #2A1B3D;align-items:center;justify-content:center;flex-direction:column;gap:5px;flex-shrink:0">
+        <span style="display:block;width:20px;height:2px;background:#F7F4F2"></span>
+        <span style="display:block;width:20px;height:2px;background:#F7F4F2"></span>
+        <span style="display:block;width:20px;height:2px;background:#F7F4F2"></span>
+      </label>
+    </div>
+  </div>
+<div class="mobileMenu">
+    <div style="padding:18px 20px;border-top:1px solid #22132F">
+      <div style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.18em;color:#FFD400">SERVICES</div>
+      <div style="display:grid;gap:2px;margin-top:12px">
+        <a href="In%20Phaze%20Service%20Page.dc.html?p=electrical-panel-upgrade" style="color:#CFC6DA;font-size:17px;padding:9px 0;display:block">Panel &amp; service upgrades</a>
+        <a href="In%20Phaze%20Service%20Page.dc.html?p=ev-charger-installation" style="color:#CFC6DA;font-size:17px;padding:9px 0;display:block">EV charger installation</a>
+        <a href="In%20Phaze%20Service%20Page.dc.html?p=surge-lightning-protection" style="color:#CFC6DA;font-size:17px;padding:9px 0;display:block">Surge &amp; lightning protection</a>
+        <a href="In%20Phaze%20Service%20Page.dc.html?p=generator-installation" style="color:#CFC6DA;font-size:17px;padding:9px 0;display:block">Generator installation</a>
+        <a href="In%20Phaze%20Service%20Page.dc.html?p=lighting-installation" style="color:#CFC6DA;font-size:17px;padding:9px 0;display:block">Lighting &amp; fixtures</a>
+        <a href="In%20Phaze%20Service%20Page.dc.html?p=rewiring-remodels" style="color:#CFC6DA;font-size:17px;padding:9px 0;display:block">Rewiring, remodels &amp; additions</a>
+        <a href="In%20Phaze%20Service%20Page.dc.html?p=electrical-repair" style="color:#CFC6DA;font-size:17px;padding:9px 0;display:block">Troubleshooting &amp; repair</a>
+        <a href="In%20Phaze%20Service%20Page.dc.html?p=commercial-electrician" style="color:#CFC6DA;font-size:17px;padding:9px 0;display:block">Commercial &amp; build-out</a>
+        <a href="In%20Phaze%20Service%20Page.dc.html?p=emergency-electrician" style="color:#CFC6DA;font-size:17px;padding:9px 0;display:block">Emergency electrician</a>
+      </div>
+    </div>
+    <div style="padding:18px 20px;border-top:1px solid #22132F">
+      <div style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.18em;color:#FFD400">SERVICE AREAS</div>
+      <div style="display:grid;gap:2px;margin-top:12px">
+        <a href="In%20Phaze%20City%20Page.dc.html?p=orlando-electrician" style="color:#CFC6DA;font-size:17px;padding:9px 0;display:block">Orlando</a>
+        <a href="In%20Phaze%20City%20Page.dc.html?p=winter-park-electrician" style="color:#CFC6DA;font-size:17px;padding:9px 0;display:block">Winter Park</a>
+        <a href="In%20Phaze%20City%20Page.dc.html?p=maitland-electrician" style="color:#CFC6DA;font-size:17px;padding:9px 0;display:block">Maitland</a>
+        <a href="In%20Phaze%20City%20Page.dc.html?p=longwood-electrician" style="color:#CFC6DA;font-size:17px;padding:9px 0;display:block">Longwood</a>
+        <a href="In%20Phaze%20City%20Page.dc.html?p=lake-mary-electrician" style="color:#CFC6DA;font-size:17px;padding:9px 0;display:block">Lake Mary</a>
+        <a href="In%20Phaze%20City%20Page.dc.html?p=winter-garden-electrician" style="color:#CFC6DA;font-size:17px;padding:9px 0;display:block">Winter Garden</a>
+        <a href="In%20Phaze%20City%20Page.dc.html?p=kissimmee-electrician" style="color:#CFC6DA;font-size:17px;padding:9px 0;display:block">Kissimmee</a>
+        <a href="In%20Phaze%20City%20Page.dc.html?p=oviedo-electrician" style="color:#CFC6DA;font-size:17px;padding:9px 0;display:block">Oviedo</a>
+        <a href="In%20Phaze%20City%20Page.dc.html?p=st-cloud-electrician" style="color:#CFC6DA;font-size:17px;padding:9px 0;display:block">St. Cloud</a>
+        <a href="In%20Phaze%20City%20Page.dc.html?p=apopka-electrician" style="color:#CFC6DA;font-size:17px;padding:9px 0;display:block">Apopka</a>
+        <a href="In%20Phaze%20City%20Page.dc.html?p=sanford-electrician" style="color:#CFC6DA;font-size:17px;padding:9px 0;display:block">Sanford</a>
+        <a href="In%20Phaze%20City%20Page.dc.html?p=windermere-electrician" style="color:#CFC6DA;font-size:17px;padding:9px 0;display:block">Windermere</a>
+      </div>
+    </div>
+    <div style="padding:18px 20px;border-top:1px solid #22132F">
+      <div style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.18em;color:#FFD400">COMPANY</div>
+      <div style="display:grid;gap:2px;margin-top:12px">
+        <a href="In%20Phaze%20Reviews.dc.html" style="color:#CFC6DA;font-size:17px;padding:9px 0">Reviews</a>
+        <a href="In%20Phaze%20Crew.dc.html" style="color:#CFC6DA;font-size:17px;padding:9px 0">The Crew</a>
+        <a href="In%20Phaze%20Cost.dc.html" style="color:#CFC6DA;font-size:17px;padding:9px 0">What it costs</a>
+        <a href="In%20Phaze%20About.dc.html" style="color:#CFC6DA;font-size:17px;padding:9px 0">About Tony</a>
+        <a href="In%20Phaze%20Careers.dc.html" style="color:#CFC6DA;font-size:17px;padding:9px 0">Careers — we're hiring</a>
+        <a href="In%20Phaze%20Electricista.dc.html" style="color:#CFC6DA;font-size:17px;padding:9px 0">Español</a>
+        <a href="In%20Phaze%20Contact.dc.html" style="color:#CFC6DA;font-size:17px;padding:9px 0">Contact</a>
+      </div>
+    </div>
+    <div style="padding:18px 20px;border-top:1px solid #22132F">
+      <a href="tel:+14075997777" style="display:block;background:#FFD400;color:#0B0710;font-family:Archivo,sans-serif;font-weight:900;font-size:19px;padding:17px;text-align:center">CALL (407) 599-7777</a>
+    </div>
+  </div>
+</header>
+
+<div style="background:#150B24;border-bottom:1px solid #22132F;padding:12px 48px;display:flex;align-items:center;gap:12px;flex-wrap:wrap">
+  <span style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.16em;color:#6B6277">ROUTE</span>
+  <span style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.1em;color:#FFD400">{{ route }}</span>
+  <span style="font-family:'JetBrains Mono',monospace;font-size:10px;color:#3B1268">│</span>
+  <sc-for list="{{ siblings }}" as="s">
+    <a href="{{ s.href }}" class="routeChip" style="border:1px solid;border-color:{{ s.border }};color:{{ s.color }};font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.1em;padding:6px 10px">{{ s.label }}</a>
+  </sc-for>
+</div>
+
+<section data-screen-label="City hero" style="padding:72px 48px 56px;background:radial-gradient(110% 90% at 22% 0%, #3B1268 0%, #150B24 50%, #0B0710 100%)">
+  <div class="split" style="display:grid;grid-template-columns:1.2fr 0.8fr;gap:56px;align-items:start">
+    <div>
+      <div style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.2em;color:#FFD400">{{ county }} · SAME-DAY CALLBACK</div>
+      <h1 style="font-family:Archivo,sans-serif;font-weight:900;font-size:clamp(38px,6.4vw,92px);line-height:0.9;letter-spacing:-0.045em;margin:20px 0 0;max-width:900px;text-wrap:balance">{{ h1 }}</h1>
+      <p style="max-width:660px;margin:24px 0 0;font-size:21px;line-height:1.5;color:#CFC6DA">{{ lede }}</p>
+      <div style="display:flex;gap:14px;margin-top:32px;flex-wrap:wrap;align-items:center">
+        <a href="tel:+14075997777" style="background:#FFD400;color:#0B0710;font-family:Archivo,sans-serif;font-weight:900;font-size:21px;padding:19px 32px" style-hover="background:#FFFFFF">CALL (407) 599-7777</a>
+        <a href="In%20Phaze%20Contact.dc.html" style="border:1px solid #6B5A80;color:#F7F4F2;font-family:Archivo,sans-serif;font-weight:700;font-size:17px;padding:19px 26px" style-hover="border-color:#FFD400;color:#FFD400">Free estimate</a>
+      </div>
+    </div>
+    <div style="border:1px solid #2A1B3D;background:#0B0710;padding:30px 32px">
+      <div style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.16em;color:#FFD400">LOCAL FACTS</div>
+      <div style="display:grid;gap:1px;background:#22132F;margin-top:16px;border:1px solid #22132F">
+        <div style="background:#0B0710;padding:16px 18px"><div style="font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:0.14em;color:#6B6277">REVIEWS FROM {{ cityUpper }}</div><div style="font-family:Archivo,sans-serif;font-weight:900;font-size:28px;line-height:1;color:#FFD400;margin-top:6px">{{ reviews }}</div></div>
+        <div style="background:#0B0710;padding:16px 18px"><div style="font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:0.14em;color:#6B6277">ELECTRIC UTILITY</div><div style="font-size:16px;line-height:1.45;color:#E4DEEC;margin-top:6px">{{ utility }}</div></div>
+        <div style="background:#0B0710;padding:16px 18px"><div style="font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:0.14em;color:#6B6277">PERMIT AUTHORITY</div><div style="font-size:16px;line-height:1.45;color:#E4DEEC;margin-top:6px">{{ permitOffice }}</div></div>
+        <div style="background:#0B0710;padding:16px 18px"><div style="font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:0.14em;color:#6B6277">FROM OUR SHOP</div><div style="font-size:16px;line-height:1.45;color:#E4DEEC;margin-top:6px">{{ drive }}</div></div>
+        <div style="background:#0B0710;padding:16px 18px"><div style="font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:0.14em;color:#6B6277">WHO USUALLY COVERS IT</div><div style="font-size:16px;line-height:1.45;color:#E4DEEC;margin-top:6px">{{ crew }}</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section data-screen-label="Local knowledge" style="padding:72px 48px;background:#0B0710;border-top:1px solid #22132F">
+  <div class="split" style="display:grid;grid-template-columns:0.95fr 1.05fr;gap:56px;align-items:start">
+    <div>
+      <span style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.2em;color:#A855F7">WHAT IS ACTUALLY IN THESE HOUSES</span>
+      <h2 style="font-family:Archivo,sans-serif;font-weight:900;font-size:clamp(28px,4.2vw,56px);line-height:0.94;letter-spacing:-0.04em;margin:16px 0 0">We have opened a lot of {{ city }} walls.</h2>
+      <p style="margin:20px 0 0;font-size:19px;line-height:1.6;color:#CFC6DA;max-width:520px">{{ localNotes }}</p>
+      <div style="margin-top:26px">
+        <div style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.16em;color:#6B6277;margin-bottom:12px">NEIGHBORHOODS WE WORK IN</div>
+        <div style="display:flex;gap:8px;flex-wrap:wrap">
+          <sc-for list="{{ neighborhoods }}" as="n">
+            <span style="border:1px solid #2A1B3D;color:#CFC6DA;font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.08em;padding:7px 11px">{{ n }}</span>
+          </sc-for>
+        </div>
+      </div>
+    </div>
+    <div style="display:grid;gap:1px;background:#22132F;border:1px solid #22132F">
+      <sc-for list="{{ housingStock }}" as="h">
+        <div style="background:#0B0710;padding:22px 26px;display:flex;gap:16px;align-items:baseline">
+          <span style="font-family:'JetBrains Mono',monospace;font-size:11px;color:#FFD400;flex-shrink:0">{{ h.n }}</span>
+          <span style="font-size:18px;line-height:1.55;color:#E4DEEC">{{ h.text }}</span>
+        </div>
+      </sc-for>
+    </div>
+  </div>
+</section>
+
+<section data-screen-label="Local reviews" style="padding:72px 48px;background:#150B24">
+  <div style="display:flex;justify-content:space-between;align-items:flex-end;gap:24px;flex-wrap:wrap;margin-bottom:24px">
+    <div>
+      <span style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.2em;color:#A855F7">PROOF FROM THIS TOWN</span>
+      <h2 style="font-family:Archivo,sans-serif;font-weight:900;font-size:clamp(26px,3.8vw,50px);line-height:0.94;letter-spacing:-0.04em;margin:16px 0 0">{{ reviews }} {{ city }} neighbors reviewed us.</h2>
+    </div>
+    <a href="In%20Phaze%20Reviews.dc.html" style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.14em">ALL {{ reviewCount }} REVIEWS →</a>
+  </div>
+  <div class="quad" style="display:grid;grid-template-columns:repeat(2,1fr);gap:16px">
+    <sc-for list="{{ localReviews }}" as="r">
+      <div style="background:#0B0710;border-left:3px solid;border-left-color:{{ r.color }};padding:26px 30px">
+        <div style="display:flex;justify-content:space-between;align-items:center;gap:16px">
+          <div style="color:#FFD400;font-size:13px;letter-spacing:2px">★★★★★</div>
+          <div style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.16em;color:{{ r.color }}">{{ r.platform }}</div>
+        </div>
+        <p style="margin:12px 0 0;font-family:Archivo,sans-serif;font-weight:600;font-size:19px;line-height:1.4">{{ r.quote }}</p>
+        <div style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.14em;color:#9B87B8;margin-top:14px">{{ r.meta }}</div>
+      </div>
+    </sc-for>
+  </div>
+</section>
+
+<section data-screen-label="Permitting" style="padding:72px 48px;background:#0B0710">
+  <div class="split" style="display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:start">
+    <div>
+      <span style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.2em;color:#A855F7">PERMITS &amp; UTILITY IN {{ cityUpper }}</span>
+      <h2 style="font-family:Archivo,sans-serif;font-weight:900;font-size:clamp(26px,3.8vw,50px);line-height:0.94;letter-spacing:-0.04em;margin:16px 0 0">The part other electricians get wrong here.</h2>
+      <p style="margin:20px 0 0;font-size:19px;line-height:1.6;color:#CFC6DA">Every jurisdiction in Central Florida files differently and every utility releases a meter on its own schedule. In {{ city }} that means <strong style="color:#F7F4F2">{{ utilityShort }}</strong> for service coordination and <strong style="color:#F7F4F2">{{ permitOffice }}</strong> for the permit. Our office runs both — you never call either one.</p>
+      <p style="margin:16px 0 0;font-size:17px;line-height:1.6;color:#8A8296">If a bid comes in dramatically below ours, ask whether the permit and inspection are in it. That is usually the entire difference, and it is the part that follows the house at resale.</p>
+    </div>
+    <div style="border:1px solid #2A1B3D;padding:30px 32px">
+      <div style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.16em;color:#FFD400">HOW A {{ cityUpper }} JOB RUNS</div>
+      <div style="display:grid;gap:18px;margin-top:20px">
+        <div><div style="font-family:Archivo,sans-serif;font-weight:800;font-size:19px">1 · Free estimate on site</div><p style="margin:6px 0 0;font-size:16px;line-height:1.55;color:#A99BBD">Diagnosis first. If you do not need the work, we say so and leave.</p></div>
+        <div><div style="font-family:Archivo,sans-serif;font-weight:800;font-size:19px">2 · Permit filed by Janzie</div><p style="margin:6px 0 0;font-size:16px;line-height:1.55;color:#A99BBD">Filed with the right office, scheduled, and tracked. You handle nothing.</p></div>
+        <div><div style="font-family:Archivo,sans-serif;font-weight:800;font-size:19px">3 · A named electrician arrives</div><p style="margin:6px 0 0;font-size:16px;line-height:1.55;color:#A99BBD">{{ crew }} He will text before he pulls up.</p></div>
+        <div><div style="font-family:Archivo,sans-serif;font-weight:800;font-size:19px">4 · Inspection, then patching</div><p style="margin:6px 0 0;font-size:16px;line-height:1.55;color:#A99BBD">We meet the inspector, then close what we opened. One-year warranty.</p></div>
+      </div>
+      <div style="margin-top:22px;padding-top:16px;border-top:1px solid #22132F;font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.12em;color:#6B6277">{{ verifyNote }}</div>
+    </div>
+  </div>
+</section>
+
+<section data-screen-label="Services here" style="padding:72px 48px;background:#F7F4F2;color:#0B0710">
+  <div style="display:flex;justify-content:space-between;align-items:flex-end;gap:24px;flex-wrap:wrap;margin-bottom:28px">
+    <div>
+      <span style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.2em;color:#7B2FF7">EVERYTHING WE DO IN {{ cityUpper }}</span>
+      <h2 style="font-family:Archivo,sans-serif;font-weight:900;font-size:clamp(28px,4.2vw,56px);line-height:0.94;letter-spacing:-0.04em;margin:16px 0 0">Residential and commercial, properly.</h2>
+    </div>
+    <div style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.14em;color:#6B6277">REAL PRICE RANGES ON EVERY PAGE</div>
+  </div>
+  <div class="trio" style="display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:#DDD6E4;border:1px solid #DDD6E4">
+    <sc-for list="{{ serviceLinks }}" as="sv">
+      <a href="{{ sv.href }}" style="background:#FFFFFF;padding:28px 30px;display:block;color:#0B0710" style-hover="background:#0B0710">
+        <div style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.14em;color:#7B2FF7">{{ sv.n }}</div>
+        <div style="font-family:Archivo,sans-serif;font-weight:900;font-size:25px;letter-spacing:-0.025em;margin:12px 0 8px">{{ sv.nav }}</div>
+        <div style="font-size:16px;line-height:1.5;color:#4A4152">{{ sv.blurb }}</div>
+        <div style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.1em;margin-top:18px">{{ sv.price }} →</div>
+      </a>
+    </sc-for>
+  </div>
+</section>
+
+<section data-screen-label="CTA" style="padding:0;background:#0B0710">
+  <div class="split" style="display:grid;grid-template-columns:0.9fr 1.1fr;align-items:stretch">
+    <div style="background:linear-gradient(150deg,#3B1268,#150B24);display:flex;align-items:center;padding:64px 48px;min-height:300px">
+      <div>
+        <div style="color:#FFD400;font-size:16px;letter-spacing:3px">★★★★★</div>
+        <div style="font-family:Archivo,sans-serif;font-weight:900;font-size:clamp(28px,3.8vw,48px);line-height:0.94;letter-spacing:-0.04em;margin-top:14px">{{ reviews }} reviews<br />from {{ city }}<br />alone.</div>
+      </div>
+    </div>
+    <div style="padding:64px 48px;display:flex;flex-direction:column;justify-content:center">
+      <h2 style="font-family:Archivo,sans-serif;font-weight:900;font-size:clamp(26px,3.6vw,48px);line-height:0.94;letter-spacing:-0.04em;margin:0">Need an electrician in {{ city }} today?</h2>
+      <p style="margin:20px 0 0;font-size:19px;line-height:1.6;color:#CFC6DA;max-width:560px">Call and a human picks up. If we are on a roof, leave a message — you get a callback the same day, not next week.</p>
+      <div style="display:flex;gap:14px;margin-top:30px;flex-wrap:wrap">
+        <a href="tel:+14075997777" style="background:#FFD400;color:#0B0710;font-family:Archivo,sans-serif;font-weight:900;font-size:22px;padding:20px 34px" style-hover="background:#FFFFFF">CALL (407) 599-7777</a>
+        <a href="In%20Phaze%20Contact.dc.html" style="border:1px solid #6B5A80;color:#F7F4F2;font-family:Archivo,sans-serif;font-weight:700;font-size:17px;padding:20px 26px" style-hover="border-color:#FFD400;color:#FFD400">Send photos instead</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer style="padding:56px 48px 40px;background:#0B0710;border-top:1px solid #22132F">
+  <div style="display:flex;justify-content:space-between;align-items:flex-start;gap:60px">
+    <div>
+      <img src="uploads/cropped-InPhaze-Electric-Medium.png" alt="In Phaze Electric Inc." style="height:82px;width:auto;display:block" />
+      <div style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.3em;color:#A855F7;margin-top:12px">YOUR ELECTRICIAN FOR LIFE</div>
+      <p style="margin:20px 0 0;font-size:16px;line-height:1.6;color:#8A8296">500 N Hudson Street, Orlando, FL 32835<br />tony@inphazeelectric.com · (407) 599-7777<br />Veteran owned · Licensed ER13014534 · Est. 2009</p>
+    </div>
+    <div style="display:flex;gap:56px;flex-wrap:wrap">
+      <div>
+        <div style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.16em;color:#FFD400">NEARBY</div>
+        <div style="display:grid;gap:8px;margin-top:14px;font-size:16px">
+          <sc-for list="{{ nearby }}" as="n">
+            <a href="{{ n.href }}" style="color:#CFC6DA">{{ n.name }}</a>
+          </sc-for>
+        </div>
+      </div>
+      <div>
+        <div style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.16em;color:#FFD400">COMPANY</div>
+        <div style="display:grid;gap:8px;margin-top:14px;font-size:16px">
+          <a href="In%20Phaze%20Homepage.dc.html" style="color:#CFC6DA">Home</a>
+          <a href="In%20Phaze%20Reviews.dc.html" style="color:#CFC6DA">All reviews</a>
+          <a href="In%20Phaze%20Crew.dc.html" style="color:#CFC6DA">Meet the crew</a>
+          <a href="In%20Phaze%20About.dc.html" style="color:#CFC6DA">About Tony</a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div style="margin-top:40px;padding-top:20px;border-top:1px solid #22132F;display:flex;justify-content:space-between;gap:20px;font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.1em;color:#6B6277">
+    <span>© 2026 IN PHAZE ELECTRIC INC. · LIC. #ER13014534</span>
+    <span>{{ cityUpper }} · {{ countyUpper }} · CENTRAL FLORIDA</span>
+  </div>
+</footer>
+
+<div class="callBar" style="position:sticky;bottom:0;z-index:70;background:#7B2FF7;display:flex;align-items:center;justify-content:space-between;padding:14px 48px">
+  <div style="display:flex;align-items:center;gap:12px">
+    <span style="color:#FFD400;font-size:13px;letter-spacing:2px">★★★★★</span>
+    <span style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.14em;color:#EBDFFF">SERVING {{ cityUpper }} · FREE ESTIMATES</span>
+  </div>
+  <a href="tel:+14075997777" style="background:#0B0710;color:#FFD400;font-family:Archivo,sans-serif;font-weight:900;font-size:17px;padding:11px 22px" style-hover="background:#FFD400;color:#0B0710">TAP TO CALL (407) 599-7777</a>
+</div>
+
+</div>
+
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  componentDidMount() {
+    /* lead-store.js is appended async, so our first render may predate it.
+       Force exactly one corrective render when it announces itself. */
+    this._rvReady = () => this.forceUpdate();
+    window.addEventListener('inphaze:reviews-ready', this._rvReady);
+    const sync = () => {
+      const h = document.querySelector('header');
+      if (h) document.body.style.setProperty('--headerH', Math.round(h.getBoundingClientRect().height) + 'px');
+    };
+    sync();
+    const h = document.querySelector('header');
+    if (h) { this._ro = new ResizeObserver(sync); this._ro.observe(h); }
+    window.addEventListener('resize', sync);
+    this._sync = sync;
+    if (!window.InPhazeContent) {
+      this._poll = setInterval(() => { if (window.InPhazeContent) { clearInterval(this._poll); this.forceUpdate(); } }, 120);
+    }
+  }
+  componentWillUnmount() {
+    if (this._rvReady) window.removeEventListener('inphaze:reviews-ready', this._rvReady);
+    if (this._ro) this._ro.disconnect();
+    if (this._sync) window.removeEventListener('resize', this._sync);
+    if (this._poll) clearInterval(this._poll);
+  }
+
+  static PLATFORMS = {
+    google: { label: 'GOOGLE', color: '#34A853' },
+    angi: { label: 'ANGI', color: '#FF6153' },
+    homeadvisor: { label: 'HOMEADVISOR', color: '#F68A1E' },
+    nextdoor: { label: 'NEXTDOOR', color: '#00613E' },
+    facebook: { label: 'FACEBOOK', color: '#1877F2' },
+    yelp: { label: 'YELP', color: '#D32323' },
+    houzz: { label: 'HOUZZ', color: '#4DBC15' },
+    bbb: { label: 'BBB', color: '#0A4F8F' }
+  };
+
+  /* Reviews genuinely tied to each city, so no two city pages read alike. */
+  static LOCAL = {
+    'orlando-electrician': [
+      { p: 'angi', q: '"He came out to give me an estimate on changing out two electrical panels, but upon further inspection he discovered the panels were fine, so he saved me a lot of money."', m: 'PANEL INSPECTION · ORLANDO' },
+      { p: 'homeadvisor', q: '"After getting the run around from other electricians I came across In Phaze. Wish I found them first."', m: 'SERVICE UPGRADE · ORLANDO' },
+      { p: 'yelp', q: '"Called at 8am, on site by 11, breaker replaced before lunch. Two other shops never called back at all."', m: 'EMERGENCY REPAIR · ORLANDO' },
+      { p: 'google', q: '"We use them for all our property maintenance calls now. They show up, which is more than I can say for the last three."', m: 'PROPERTY MANAGEMENT · ORLANDO' }
+    ],
+    'winter-park-electrician': [
+      { p: 'google', q: '"They were charging us three times as much as Tony quoted us. Tony\'s guy was out the next day and within an hour had it installed."', m: 'FIXTURE INSTALL · WINTER PARK' },
+      { p: 'google', q: '"Grant is the best. Always on time, great work, very detailed."', m: 'RECESSED LIGHTING · WINTER PARK' },
+      { p: 'google', q: '"Mike found a bootlegged ground the last electrician left behind and fixed it the same visit."', m: 'TROUBLESHOOTING · WINTER PARK' },
+      { p: 'yelp', q: '"Came after close so we never lost a service hour. That mattered more than the price."', m: 'RETAIL SERVICE · WINTER PARK' }
+    ],
+    'kissimmee-electrician': [
+      { p: 'facebook', q: '"Third time using them. They are our go-to and I do not even get other quotes anymore."', m: 'REPEAT CUSTOMER · KISSIMMEE' },
+      { p: 'google', q: '"Bootleg ground on six outlets from the previous owner. Corrected in one visit and explained plainly."', m: 'REPAIR · KISSIMMEE' },
+      { p: 'yelp', q: '"Great work and fair price. Only note is scheduling took a couple of calls during their busy season."', m: 'SERVICE CALL · KISSIMMEE' },
+      { p: 'homeadvisor', q: '"Handled the pool equipment bonding our inspector flagged. Passed on the re-inspection."', m: 'POOL BONDING · KISSIMMEE' }
+    ],
+    'maitland-electrician': [
+      { p: 'homeadvisor', q: '"Talking with anyone — I mean anyone — at this company is like talking with a best friend."', m: 'SERVICE CALL · MAITLAND' },
+      { p: 'angi', q: '"Did a load calculation first and told me I did not need a service upgrade to add the charger. Saved me thousands."', m: 'EV CHARGER · MAITLAND' },
+      { p: 'nextdoor', q: '"Twelve recessed cans in a day and not one patch mark on the ceiling."', m: 'RECESSED LIGHTING · MAITLAND' },
+      { p: 'bbb', q: '"Certificates of insurance before we even asked. Refreshing."', m: 'TENANT IMPROVEMENT · MAITLAND' }
+    ],
+    'longwood-electrician': [
+      { p: 'google', q: '"They explained the issue so I would not make the mistake of buying a different stove."', m: 'APPLIANCE CIRCUIT · LONGWOOD' },
+      { p: 'facebook', q: '"Replaced our Federal Pacific panel. They explained why it mattered instead of just scaring us into it."', m: 'PANEL REPLACEMENT · LONGWOOD' },
+      { p: 'google', q: '"Well pump died after a storm. They found the surge damage and put in real protection so it does not happen again."', m: 'WELL & SURGE · LONGWOOD' },
+      { p: 'homeadvisor', q: '"Straight quote, no pressure, and they showed up when they said they would."', m: 'SERVICE CALL · LONGWOOD' }
+    ],
+    'lake-mary-electrician': [
+      { p: 'google', q: '"Jason installed my EV charger efficiently and explained the work clearly. No surprises on the invoice."', m: 'EV CHARGER · LAKE MARY' },
+      { p: 'nextdoor', q: '"Asked the neighborhood for an electrician and In Phaze came up four times before I finished reading the thread."', m: 'NEIGHBOR RECOMMENDATION · LAKE MARY' },
+      { p: 'homeadvisor', q: '"They pulled the permit, met the inspector, and I never had to take a day off work."', m: 'PERMIT COORDINATION · LAKE MARY' },
+      { p: 'google', q: '"Two chargers sharing one circuit instead of a service upgrade. Saved us a fortune."', m: 'EV CHARGER · LAKE MARY' }
+    ],
+    'winter-garden-electrician': [
+      { p: 'google', q: '"Quoted fair, showed up when they said, cleaned up after and patched the drywall. Will always use going forward."', m: 'REWIRE · WINTER GARDEN' },
+      { p: 'google', q: '"Tesla Wall Connector installed in an afternoon. Conduit run looks factory."', m: 'EV CHARGER · WINTER GARDEN' },
+      { p: 'angi', q: '"Garage conversion wiring done right the first time. Inspector had nothing to say."', m: 'ADDITION · WINTER GARDEN' },
+      { p: 'facebook', q: '"Downtown restaurant build-out. On schedule, which never happens."', m: 'COMMERCIAL · WINTER GARDEN' }
+    ],
+    'oviedo-electrician': [
+      { p: 'google', q: '"Victor was professional, efficient, pleasant and informative. He went out of his way to get it done right."', m: 'TROUBLESHOOTING · OVIEDO' },
+      { p: 'nextdoor', q: '"Put in twelve recessed cans in a day and you cannot find a single patch mark on the ceiling."', m: 'RECESSED LIGHTING · OVIEDO' },
+      { p: 'google', q: '"Pool pump was never bonded. They found it, fixed it, and showed me why it mattered."', m: 'POOL BONDING · OVIEDO' },
+      { p: 'yelp', q: '"Fixed a DIY renovation without making me feel stupid about it."', m: 'REPAIR · OVIEDO' }
+    ],
+    'st-cloud-electrician': [
+      { p: 'google', q: '"Long run out to the barn done properly with the right wire size. Nothing dims when the pump kicks on."', m: 'OUTBUILDING FEEDER · ST. CLOUD' },
+      { p: 'homeadvisor', q: '"Essential-circuit generator so the well and fridge stay on. Exactly what we needed, not more."', m: 'GENERATOR · ST. CLOUD' },
+      { p: 'google', q: '"Old downtown house with no grounding anywhere. They staged it so we kept living here."', m: 'REWIRE · ST. CLOUD' },
+      { p: 'facebook', q: '"Drove all the way out here same week. Nobody else would."', m: 'SERVICE CALL · ST. CLOUD' }
+    ],
+    'apopka-electrician': [
+      { p: 'google', q: '"Janzie was super helpful with the permitting process and very responsive the whole way through."', m: 'PERMIT COORDINATION · APOPKA' },
+      { p: 'google', q: '"New mast, riser and meter can. Coordinated the utility so we were only off a few hours."', m: 'SERVICE REBUILD · APOPKA' },
+      { p: 'angi', q: '"Free estimate, no pressure, and the price did not change from quote to invoice."', m: 'SERVICE UPGRADE · APOPKA' },
+      { p: 'homeadvisor', q: '"Irrigation pump circuit on the nursery property. Knew exactly what they were doing."', m: 'AGRICULTURAL · APOPKA' }
+    ],
+    'sanford-electrician': [
+      { p: 'bbb', q: '"Veteran owned, honest pricing, and they stood behind the work when I called a year later."', m: 'WARRANTY FOLLOW-UP · SANFORD' },
+      { p: 'google', q: '"Knob-and-tube in a historic house. They documented everything for our insurance carrier."', m: 'REWIRE · SANFORD' },
+      { p: 'yelp', q: '"Storm put water in the panel. They made it safe that night and did the real repair permitted after."', m: 'EMERGENCY · SANFORD' },
+      { p: 'facebook', q: '"Change of use on a downtown building. They worked the inspector list line by line."', m: 'COMMERCIAL · SANFORD' }
+    ],
+    'windermere-electrician': [
+      { p: 'houzz', q: '"Neatest panel work I have seen. Every breaker labeled, every run straight. You can tell they care."', m: 'PANEL UPGRADE · WINDERMERE' },
+      { p: 'houzz', q: '"Landscape and dock lighting turned out better than the renderings. Timer and photocell all dialed in."', m: 'LANDSCAPE LIGHTING · WINDERMERE' },
+      { p: 'google', q: '"Generator, surge protection and two chargers. One contractor, one schedule, no drama."', m: 'WHOLE-HOME · WINDERMERE' },
+      { p: 'angi', q: '"Boat lift circuit bonded properly after someone else did it wrong."', m: 'DOCK & LIFT · WINDERMERE' }
+    ]
+  };
+
+  renderVals() {
+    const __R = window.InPhazeReviews;
+    const __f = __R ? __R.publicFigures(801, 4.8) : { count: 801, rating: 4.8 };
+    const __figs = { reviewCount: __f.count, reviewRating: __f.rating.toFixed(1), proofChip: __f.count + ' REVIEWS' };
+    const C = window.InPhazeContent;
+    if (!C) {
+      return {
+      ...__figs,
+        route: 'loading…', h1: 'Loading city page…', lede: '', city: '', cityUpper: '', county: '', countyUpper: '',
+        utility: '', utilityShort: '', permitOffice: '', drive: '', crew: '', reviews: 0, localNotes: '',
+        neighborhoods: [], housingStock: [], localReviews: [], serviceLinks: [], siblings: [], nearby: [], verifyNote: ''
+      };
+    }
+    const slug = C.param('orlando-electrician');
+    const c = C.cityMap[slug] || C.CITIES[0];
+    const localReviews = (Component.LOCAL[c.slug] || Component.LOCAL['orlando-electrician']).map(r => {
+      const p = Component.PLATFORMS[r.p];
+      return {
+      ...__figs, platform: p.label, color: p.color, quote: r.q, meta: r.m };
+    });
+    const idx = C.CITIES.findIndex(x => x.slug === c.slug);
+
+    return {
+      ...__figs,
+      route: '/' + c.slug,
+      h1: 'Electrician in ' + c.name + ', FL',
+      lede: c.reviews + ' ' + c.name + ' homeowners have reviewed us. ' + c.drive + ' We know what is behind these walls because we have been in them.',
+      city: c.name,
+      cityUpper: c.name.toUpperCase(),
+      county: c.county.toUpperCase(),
+      countyUpper: c.county.toUpperCase(),
+      utility: c.utility,
+      utilityShort: c.utility.split(/[;(]/)[0].trim(),
+      permitOffice: c.permitOffice,
+      drive: c.drive,
+      crew: c.crew,
+      reviews: c.reviews,
+      localNotes: c.localNotes,
+      neighborhoods: c.neighborhoods,
+      housingStock: c.housingStock.map((t, i) => ({ n: String(i + 1).padStart(2, '0'), text: t })),
+      localReviews,
+      verifyNote: c.verify ? 'UTILITY & PERMIT OFFICE — CONFIRM PER ADDRESS BEFORE PUBLISH' : '',
+      serviceLinks: C.SERVICES.map((s, i) => ({
+        n: String(i + 1).padStart(2, '0'),
+        nav: s.nav,
+        blurb: s.lede.split('.')[0] + '.',
+        price: s.priceRange.toUpperCase(),
+        href: 'In%20Phaze%20Service%20Page.dc.html?p=' + s.slug
+      })),
+      siblings: C.CITIES.map(x => ({
+        label: x.name.toUpperCase(),
+        href: 'In%20Phaze%20City%20Page.dc.html?p=' + x.slug,
+        border: x.slug === c.slug ? '#FFD400' : '#2A1B3D',
+        color: x.slug === c.slug ? '#FFD400' : '#8A8296'
+      })),
+      nearby: [1, 2, 3, 4, 5].map(o => C.CITIES[(idx + o) % C.CITIES.length]).map(x => ({
+        name: x.name,
+        href: 'In%20Phaze%20City%20Page.dc.html?p=' + x.slug
+      }))
+    };
+  }
+}
+</script>
+</body>
+</html>
