@@ -5,7 +5,7 @@
   const slug = params.get('p');
   const content = () => window.InPhazeContent;
   const originPath = `${window.location.pathname}${slug ? `?p=${encodeURIComponent(slug)}` : ''}`;
-  const image = new URL('uploads/cropped-InPhaze-Electric-Medium.png', window.location.href).href;
+  const image = new URL('https://cdn.builder.io/api/v1/image/assets%2F57fd5e85f28146269960c5b0fe53c10e%2F6d4e4296044147079b722ca134da3c83?format=webp&width=800&height=1200', window.location.href).href;
 
   const setMeta = (selector, attribute, value) => {
     let element = document.head.querySelector(selector);
